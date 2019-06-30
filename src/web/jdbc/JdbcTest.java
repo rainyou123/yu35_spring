@@ -24,13 +24,18 @@ public class JdbcTest {
     public void testJdbc2(){
         String sql = "insert into user values (null , ? , ?)";
         jt.update(sql,"haha","haha@163.com");
-
     }
 
     @Test
     public void testJdbc3(){
         String sql = "update user set username = ? where id = ?";
         jt.update(sql , "吴亦凡", 4);
+    }
+
+    @Test
+    public void testJdbc4(){
+        String sql = "delete from user where id = ?";
+        jt.update(sql ,  5);
     }
 
     @Test
