@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--
+    name:对象的名称，可以重复，可以有特殊字符
+    class: 类的完整路径，相对路径
+    id: 不可以重复的，不可以有特殊字符
+    scope:域  ，默认单例模式，singleton   prototype:多例
+    -->
+    <bean name="user" class="web.domain.User">
+        <!--set方法注入-->
+        <!--<property name="name" value="张三"></property>-->
+        <!--<property name="age" value="18"></property>-->
+        <!--<property name="car" ref="car"></property>-->
+
+        <!--构造方法注入-->
+        <!--index 是第几个参数  type是什么类型-->
+        <constructor-arg name="name" value="32" index="0" type="java.lang.String" ></constructor-arg>
+        <constructor-arg name="age" value="18"></constructor-arg>
+        <constructor-arg name="car" ref="car"></constructor-arg>
+        <!--表达式注入-->
+    </bean>
+
+    <bean name="user2" class="web.domain.User">
+        <property name="name" value="#{user.name}"></property>
+        <property name="age" value="#{user.age}"></property>
+        <property name="car" ref="car"></property>
+        <!--<property name="car" value="#{user.car}"></property>-->
+    </bean>
+
+
+    <bean name="car" class="web.domain.Car">
+        <property name="name" value="兰博基尼"></property>
+        <property name="color" value="蓝色"></property>
+    </bean>
+</beans>

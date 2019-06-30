@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd ">
+    <context:component-scan base-package="web"/>
+    <!--
+    name:对象的名称，可以重复，可以有特殊字符
+    class: 类的完整路径，相对路径
+    id: 不可以重复的，不可以有特殊字符
+    scope:域  ，默认单例模式，singleton   prototype:多例
+    -->
 
-    <bean name="user" class="web.domain.User"></bean>
-
+    <bean name="user" class="web.domain.User" init-method="init" destroy-method="destory"></bean>
+    <!--静态工厂创建-->
+    <bean name="user2" class="web.domain.UserFactory" factory-method="createUser"></bean>
+    <!--实例工厂创建-->
+    <bean name="user3" factory-bean="userFactory" factory-method="createUser2"></bean>
+    <bean name="userFactory" class="web.domain.UserFactory"></bean>
+    <bean name="car2" class="web.domain.Car">
+        <property name="name" value="奇瑞QQ"></property>
+        <property name="color" value="白"></property>
+    </bean>
 </beans>
+<!--用@注解方式就省去了一个bean    前面用@配置的car1 与上面的car2是一样的-->
