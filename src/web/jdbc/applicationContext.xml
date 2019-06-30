@@ -6,14 +6,22 @@
 http://www.springframework.org/schema/context/spring-context.xsd">
     <context:component-scan base-package="web.jdbc"/><!--扫描包-->
 
-    <!--&lt;!&ndash;属性文件的读取&ndash;&gt;-->
-    <!--<context:property-placeholder location="db.properties"></context:property-placeholder>-->
-    <!--&lt;!&ndash;c3p0连接池&ndash;&gt;-->
+    <!--属性文件的读取-->
+    <context:property-placeholder location="db.properties"></context:property-placeholder>
+    <!--c3p0连接池-->
+    <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driverClass}"></property>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <!--c3p0连接池-->
     <!--<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-        <!--<property name="driverClass" value="${jdbc.driverClass}"></property>-->
-        <!--<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>-->
-        <!--<property name="user" value="${jdbc.username}"></property>-->
-        <!--<property name="password" value="${jdbc.password}"></property>-->
+        <!--<property name="driverClass" value="com.mysql.jdbc.Driver"></property>-->
+        <!--<property name="jdbcUrl" value="jdbc:mysql:///yu35_spring"></property>-->
+        <!--<property name="user" value="root"></property>-->
+        <!--<property name="password" value="wangyu"></property>-->
     <!--</bean>-->
 
     <!--jdbc摸版-->
