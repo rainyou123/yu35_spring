@@ -13,6 +13,9 @@
     -->
 
     <bean name="user" class="web.domain.User" init-method="init" destroy-method="destory"></bean>
+
+
+
     <!--静态工厂创建-->
     <bean name="user2" class="web.domain.UserFactory" factory-method="createUser"></bean>
     <!--实例工厂创建-->

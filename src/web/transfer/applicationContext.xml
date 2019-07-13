@@ -58,7 +58,7 @@ http://www.springframework.org/schema/context/spring-context.xsd  http://www.spr
     <!--配置AOP织入-->
     <!--<aop:config>-->
          <!--<aop:pointcut id="txPc" expression="execution(* web.transfer.*Service.*(..))"></aop:pointcut>-->
-        <!--&lt;!&ndash;事物写好的advice ：advice-ref="txAd" 已经将transfer 加强变成事物&ndash;&gt;-->
+        <!--事物写好的advice ：advice-ref="txAd" 已经将transfer 加强变成事物-->
          <!--<aop:advisor advice-ref="txAd" pointcut-ref="txPc"></aop:advisor>-->
      <!--</aop:config>-->
 
