@@ -22,8 +22,8 @@ public class JdbcTest {
     private JdbcTemplate jt;
     @Test
     public void testJdbc2(){
-        String sql = "insert into user values (null , ? , ?)";
-        jt.update(sql,"haha","haha@163.com");
+        String sql = "insert into user values (null , ? , ? ,NULL )";
+        jt.update(sql,"hahaha","haha@163.com");
     }
 
     @Test
@@ -43,10 +43,14 @@ public class JdbcTest {
 
         ComboPooledDataSource dataSource = new ComboPooledDataSource();// 如果有C3p0.xml 可以自己匹配C3p0
         //手动配置（没用C3p0的xml）
+//        try {
 //            dataSource.setDriverClass("com.mysql.jdbc.Driver");
-//            dataSource.setJdbcUrl("jdbc:mysql:///yu35_spring");
-//            dataSource.setUser("root");
-//            dataSource.setPassword("wangyu");
+//        } catch (PropertyVetoException e) {
+//            e.printStackTrace();
+//        }
+//        dataSource.setJdbcUrl("jdbc:mysql:///yu35_spring");
+//        dataSource.setUser("root");
+//        dataSource.setPassword("wangyu");
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);//c3p0Utils有没有都行 用不上
         //将c3p0隐藏（放在除src根目录下的地方 在app  .xml文件中配置）
         String sql = "select * from user";
